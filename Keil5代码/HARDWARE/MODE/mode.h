@@ -18,7 +18,7 @@ void pee(void);//撒尿
 void dance(void);//跳舞
 void laugh(void);//笑一个
 void fierce(void);//凶一个
-void roll(void);//走开，我讨厌你
+void cry(void);//我讨厌你,哭泣
 void mode(void);
 void Hidden_Action(void);
 

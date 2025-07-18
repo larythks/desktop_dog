@@ -860,7 +860,7 @@ void fierce(void)//凶一个
 	}
 }
 
-void roll(void)//走开
+void cry(void)//哭泣
 {
 	OLED_Clear();
 	

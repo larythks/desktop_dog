@@ -85,8 +85,7 @@ int main(void)
 		}
 		else if(Sign==14)
 		{
-			//Stand();
-			roll();//×ß¿ª
+			cry();//¿ÞÆü
 		}
 		else if(Sign==15)
 		{

@@ -223,7 +223,7 @@ void Rock(void)//Ò¡°Ú
 
 void Handshake(void)//ÎÕÊÖ
 {
-	OLED_ShowImage(0,0,128,64,BMP11);
+	OLED_ShowImage(0,0,128,64,BMP16);
 	OLED_Update();
 	TIM_SetCompare2(TIM4,220 );
 	TIM_SetCompare3(TIM4,150 );
@@ -910,7 +910,8 @@ void roll(void)//×ß¿ª
 }
 
 void Hidden_Action(void){
-	OLED_ShowImage(0,0,128,64,BMP14);
+	OLED_Clear();
+	OLED_ShowImage(32,0,64,64,BMP14);
 	OLED_Update();
 	uint16_t count = 0;
 	

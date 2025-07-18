@@ -1,8 +1,6 @@
 #include "tianwen.h"
 
 u16 USART2_Res=0;
-u16 USART2_Res2=0;
-int USART2_Sign = 0;
 
 void USART2_Init(u32 baud)
 {
@@ -43,10 +41,7 @@ void USART2_Init(u32 baud)
 }
 
 void USART2_IRQHandler(void)
-{
-	//OLED显示数据
-	//u8 string[10]={0};
-	
+{	
 	if(USART_GetITStatus(USART2, USART_IT_RXNE) != RESET) 
 	{
 		LED=!LED;
@@ -69,9 +64,5 @@ void USART2_IRQHandler(void)
 		if(USART2_Res==0x66)LED_OPEN;//开灯
 		if(USART2_Res==0x67)LED_CLOSE;//关灯
 		if(USART2_Res==0x68)Sign=1;//恢复初始化站立
-		
-//		sprintf((char *)string,"%x",USART2_Res);
-//		OLED_ShowString(0,0,string,8);
-//		OLED_Update();
 	}
 }

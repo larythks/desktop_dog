@@ -2,7 +2,7 @@
 
 u16 count=0;//动作延时计数
 u16 delay=10;//舵机运动延迟
-u16 oled_counter=0;
+u16 oled_counter=0;//OLED延时计数
 
 //1号脚--->左前
 //2号脚--->右后
@@ -100,10 +100,6 @@ void For(int x,int y,int num)
 //缓慢站起（踉跄版）
 void SlowStand(void)
 {
-//	TIM_SetCompare1(TIM4,70 );
-//	TIM_SetCompare2(TIM4,70 );
-//	TIM_SetCompare3(TIM4,225 );
-//	TIM_SetCompare4(TIM4,225 );	
 	static uint16_t value1 = 2250;
 	static uint16_t value2 = 700;
 	static uint8_t a = 1;
@@ -933,5 +929,4 @@ void Hidden_Action(void){
 			break;
 		}
 	}
-
 }

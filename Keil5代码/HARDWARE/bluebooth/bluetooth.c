@@ -1,7 +1,5 @@
 #include "bluetooth.h"
 
-u8 Sign1=0;
-int USART3_Sign = 20;
 u8 Blue_data[6];
 
 void USART3_Init(u32 baud)
@@ -45,12 +43,8 @@ void USART3_Init(u32 baud)
 
 void USART3_IRQHandler(void)
 {
-	//OLED显示数据
-	//u8 string[10]={0};
-	
 	if(USART_GetITStatus(USART3, USART_IT_RXNE)!=RESET)
 	{
-//	OLED_Clear();
 		LED=!LED;
 		Blue_data[0]=USART_ReceiveData(USART3);
 		if(Blue_data[0]==0x49){		//I
@@ -97,19 +91,8 @@ void USART3_IRQHandler(void)
 			Sign=15;//隐藏动作
 			Usart_SendByte(USART2, 0x5B);  
 		}
-		//    C          O          N          N          E          C          T          E          D
-		//   0X43       0x4f			 0x4E			  0x4E			 0X45			  0X43			 0X54			  0X45			 0X44
-		
-//		sprintf((char *)string,"%d",Blue_data[0]);
-//		OLED_ShowString(0,0,string,8);
-//		sprintf((char *)string,"%d",Blue_data[1]);
-//		OLED_ShowString(0,16,string,8);
-//		sprintf((char *)string,"%d",Blue_data[2]);
-//		OLED_ShowString(0,32,string,8);
-//		sprintf((char *)string,"%d",Blue_data[3]);
-//		OLED_ShowString(0,48,string,8);
-//		OLED_Update();
-		
+		//  D        I        S         C          O          N          N          E          C          T          E          D
+		// 0x44     0x49     0x53      0x43       0x4f			 0x4E			  0x4E			 0x45			  0x43			 0x54			  0x45			 0x44
 	}
 }
 

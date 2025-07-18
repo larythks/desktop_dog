@@ -287,7 +287,7 @@ I (..\HARDWARE\bluebooth\bluetooth.h)(0x687A072D)
 I (F:\Keil for ARM\ARM\ARMCC\include\stdarg.h)(0x57F606B8)
 I (F:\Keil for ARM\ARM\ARMCC\include\string.h)(0x57F606B8)
 I (F:\Keil for ARM\ARM\ARMCC\include\math.h)(0x57F606B6)
-F (..\HARDWARE\MODE\mode.c)(0x687A4903)(--c99 -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\USER -I ..\CORE -I ..\STM32F10x_FWLib\inc -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\HARDWARE\LED -I ..\HARDWARE\EXTI -I ..\HARDWARE\KEY -I ..\HARDWARE\OLED -I ..\HARDWARE\LEG -I ..\HARDWARE\MODE -I ..\HARDWARE\infrared -I ..\HARDWARE\Tianwen -I ..\HARDWARE\bluebooth-I.\RTE\_LED-I"F:\Keil for ARM\ARM\PACK\Keil\STM32F1xx_DFP\2.4.1\Device\Include"-I"F:\Keil for ARM\ARM\CMSIS\Include"-D__UVISION_VERSION="523" -DSTM32F10X_MD -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER-o ..\obj\mode.o --omf_browse ..\obj\mode.crf --depend ..\obj\mode.d)
+F (..\HARDWARE\MODE\mode.c)(0x687AD90E)(--c99 -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\USER -I ..\CORE -I ..\STM32F10x_FWLib\inc -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\HARDWARE\LED -I ..\HARDWARE\EXTI -I ..\HARDWARE\KEY -I ..\HARDWARE\OLED -I ..\HARDWARE\LEG -I ..\HARDWARE\MODE -I ..\HARDWARE\infrared -I ..\HARDWARE\Tianwen -I ..\HARDWARE\bluebooth-I.\RTE\_LED-I"F:\Keil for ARM\ARM\PACK\Keil\STM32F1xx_DFP\2.4.1\Device\Include"-I"F:\Keil for ARM\ARM\CMSIS\Include"-D__UVISION_VERSION="523" -DSTM32F10X_MD -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER-o ..\obj\mode.o --omf_browse ..\obj\mode.crf --depend ..\obj\mode.d)
 I (..\HARDWARE\MODE\mode.h)(0x687A492D)
 I (..\USER\user.h)(0x6877690A)
 I (..\USER\stm32f10x.h)(0x686FB2A8)
@@ -377,7 +377,7 @@ I (..\HARDWARE\bluebooth\bluetooth.h)(0x687A072D)
 I (F:\Keil for ARM\ARM\ARMCC\include\stdarg.h)(0x57F606B8)
 I (F:\Keil for ARM\ARM\ARMCC\include\string.h)(0x57F606B8)
 I (F:\Keil for ARM\ARM\ARMCC\include\math.h)(0x57F606B6)
-F (..\HARDWARE\bluebooth\bluetooth.c)(0x687A5FD1)(--c99 -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\USER -I ..\CORE -I ..\STM32F10x_FWLib\inc -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\HARDWARE\LED -I ..\HARDWARE\EXTI -I ..\HARDWARE\KEY -I ..\HARDWARE\OLED -I ..\HARDWARE\LEG -I ..\HARDWARE\MODE -I ..\HARDWARE\infrared -I ..\HARDWARE\Tianwen -I ..\HARDWARE\bluebooth-I.\RTE\_LED-I"F:\Keil for ARM\ARM\PACK\Keil\STM32F1xx_DFP\2.4.1\Device\Include"-I"F:\Keil for ARM\ARM\CMSIS\Include"-D__UVISION_VERSION="523" -DSTM32F10X_MD -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER-o ..\obj\bluetooth.o --omf_browse ..\obj\bluetooth.crf --depend ..\obj\bluetooth.d)
+F (..\HARDWARE\bluebooth\bluetooth.c)(0x687A60C0)(--c99 -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\USER -I ..\CORE -I ..\STM32F10x_FWLib\inc -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\HARDWARE\LED -I ..\HARDWARE\EXTI -I ..\HARDWARE\KEY -I ..\HARDWARE\OLED -I ..\HARDWARE\LEG -I ..\HARDWARE\MODE -I ..\HARDWARE\infrared -I ..\HARDWARE\Tianwen -I ..\HARDWARE\bluebooth-I.\RTE\_LED-I"F:\Keil for ARM\ARM\PACK\Keil\STM32F1xx_DFP\2.4.1\Device\Include"-I"F:\Keil for ARM\ARM\CMSIS\Include"-D__UVISION_VERSION="523" -DSTM32F10X_MD -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER-o ..\obj\bluetooth.o --omf_browse ..\obj\bluetooth.crf --depend ..\obj\bluetooth.d)
 I (..\HARDWARE\bluebooth\bluetooth.h)(0x687A072D)
 I (..\USER\user.h)(0x6877690A)
 I (..\USER\stm32f10x.h)(0x686FB2A8)

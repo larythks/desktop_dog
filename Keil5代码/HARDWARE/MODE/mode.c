@@ -605,10 +605,12 @@ void pee(void)//ÈöÄò
 {
 	OLED_ShowImage(0,0,128,64,BMP9);
 	OLED_Update();
-	TIM_SetCompare1(TIM4,75 );
-	TIM_SetCompare2(TIM4,75 );
+	TIM_SetCompare1(TIM4,90 );
 	TIM_SetCompare3(TIM4,150 );
-	TIM_SetCompare4(TIM4,150 );
+	TIM_SetCompare4(TIM4,200 );
+	
+	delay_ms(100);
+	TIM_SetCompare2(TIM4,70 );
 	
 	while(1)
 	{

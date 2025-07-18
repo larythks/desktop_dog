@@ -1,6 +1,7 @@
 #include "bluetooth.h"
 
 u8 Blue_data[6];
+u8 bluetooth_flag = 0;
 
 void USART3_Init(u32 baud)
 {
@@ -47,7 +48,7 @@ void USART3_IRQHandler(void)
 	{
 		LED=!LED;
 		Blue_data[0]=USART_ReceiveData(USART3);
-		if(Blue_data[0]==0x49){		//I
+		if(Blue_data[0]==0x50){		//P
 			Sign=1;//立正
 			Usart_SendByte(USART2, 0x41);
 		}
@@ -91,9 +92,25 @@ void USART3_IRQHandler(void)
 			Sign=15;//隐藏动作
 			Usart_SendByte(USART2, 0x5B);  
 		}
+		if(Blue_data[0]==0x4F){		//O
+			if(bluetooth_flag == 0){
+				//已连接蓝牙
+				bluetooth_flag++;
+				Usart_SendByte(USART2, 0x4E);
+			}
+			else if(bluetooth_flag == 2)
+				bluetooth_flag = 0;
+			}
+		}
+		if(Blue_data[0]==0x49){		//I
+			if(bluetooth_flag == 1){
+				//已断开蓝牙连接
+				Usart_SendByte(USART2, 0x4F);
+				bluetooth_flag++;
+			}
+		}
 		//  D        I        S         C          O          N          N          E          C          T          E          D
-		// 0x44     0x49     0x53      0x43       0x4f			 0x4E			  0x4E			 0x45			  0x43			 0x54			  0x45			 0x44
-	}
+		// 0x44     0x49     0x53      0x43       0x4F			 0x4E			  0x4E			 0x45			  0x43			 0x54			  0x45			 0x44
 }
 
 /* 发送一个字节 */

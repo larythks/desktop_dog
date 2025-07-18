@@ -822,7 +822,7 @@ void laugh(void)//笑一个
 
 void fierce(void)//凶一个
 {
-	OLED_ShowImage(0,0,128,64,BMP12);
+	OLED_ShowImage(0,0,128,64,BMP15);
 	OLED_Update();
 	
 	TIM_SetCompare1(TIM4,120 );//占空比7.5%旋转90度
@@ -863,8 +863,7 @@ void fierce(void)//凶一个
 
 void roll(void)//走开
 {
-	OLED_ShowImage(0,0,128,64,BMP12);
-	OLED_Update();
+	OLED_Clear();
 	
 	TIM_SetCompare1(TIM4,150 );//占空比7.5%旋转90度
 	TIM_SetCompare2(TIM4,150 );//占空比7.5%旋转90度
@@ -873,6 +872,16 @@ void roll(void)//走开
 	
 	while(1)
 	{
+		oled_counter++;
+		if(oled_counter==400){
+			OLED_ShowImage(32,0,64,64,BMP12_1);
+			OLED_Update();
+		}
+		if(oled_counter==800){
+			OLED_ShowImage(32,0,64,64,BMP12_2);
+			OLED_Update();
+			oled_counter = 0;
+		}
 		count++;
 		delay_ms(1);
 		static uint16_t value = 150;

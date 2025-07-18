@@ -109,7 +109,7 @@ def convert_image_file(filename, output_prefix='oled_output'):
 # 使用示例
 if __name__ == "__main__":
     # 相对路径示例，这里假设图片在与脚本同一目录
-    convert_image_file("睡觉 - 动态简笔画_爱给网_aigei_com.gif")
+    convert_image_file("笑脸.gif")
     
     # 也可以处理子文件夹中的图像
     # convert_image_file("images/test.png")

@@ -1,0 +1,31 @@
+{
+    "configurations": [
+        {
+            "name": "Win32",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "${workspaceFolder}/CORE",
+                "${workspaceFolder}/HARDWARE/bluebooth",
+                "${workspaceFolder}/HARDWARE/EXTI",
+                "${workspaceFolder}/HARDWARE/infrared",
+                "${workspaceFolder}/HARDWARE/KEY",
+                "${workspaceFolder}/HARDWARE/LED",
+                "${workspaceFolder}/HARDWARE/LEG",
+                "${workspaceFolder}/HARDWARE/MODE",
+                "${workspaceFolder}/HARDWARE/OLED",
+                "${workspaceFolder}/HARDWARE/Tianwen",
+                "${workspaceFolder}/STM32F10x_FWLib/inc",
+                "${workspaceFolder}/SYSTEM/delay",
+                "${workspaceFolder}/SYSTEM/sys",
+                "${workspaceFolder}/SYSTEM/usart",
+                "${workspaceFolder}/USER",
+            ],
+            "defines": [
+                "_DEBUG",
+                "UNICODE",
+                "_UNICODE"
+            ]
+        }
+    ],
+    "version": 4
+}

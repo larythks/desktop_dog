@@ -1,0 +1,34 @@
+..\obj\steering engine.o: ..\HARDWARE\Steering Engine\steering engine.c
+..\obj\steering engine.o: ..\HARDWARE\Steering Engine\steering engine.h
+..\obj\steering engine.o: ..\SYSTEM\sys\sys.h
+..\obj\steering engine.o: ..\USER\stm32f10x.h
+..\obj\steering engine.o: ..\CORE\core_cm3.h
+..\obj\steering engine.o: C:\Keil_v5\ARM\RAM_v5.06\Bin\..\include\stdint.h
+..\obj\steering engine.o: ..\USER\system_stm32f10x.h
+..\obj\steering engine.o: ..\USER\stm32f10x_conf.h
+..\obj\steering engine.o: ..\STM32F10x_FWLib\inc\stm32f10x_adc.h
+..\obj\steering engine.o: ..\USER\stm32f10x.h
+..\obj\steering engine.o: ..\STM32F10x_FWLib\inc\stm32f10x_bkp.h
+..\obj\steering engine.o: ..\STM32F10x_FWLib\inc\stm32f10x_can.h
+..\obj\steering engine.o: ..\STM32F10x_FWLib\inc\stm32f10x_cec.h
+..\obj\steering engine.o: ..\STM32F10x_FWLib\inc\stm32f10x_crc.h
+..\obj\steering engine.o: ..\STM32F10x_FWLib\inc\stm32f10x_dac.h
+..\obj\steering engine.o: ..\STM32F10x_FWLib\inc\stm32f10x_dbgmcu.h
+..\obj\steering engine.o: ..\STM32F10x_FWLib\inc\stm32f10x_dma.h
+..\obj\steering engine.o: ..\STM32F10x_FWLib\inc\stm32f10x_exti.h
+..\obj\steering engine.o: ..\STM32F10x_FWLib\inc\stm32f10x_flash.h
+..\obj\steering engine.o: ..\STM32F10x_FWLib\inc\stm32f10x_fsmc.h
+..\obj\steering engine.o: ..\STM32F10x_FWLib\inc\stm32f10x_gpio.h
+..\obj\steering engine.o: ..\STM32F10x_FWLib\inc\stm32f10x_i2c.h
+..\obj\steering engine.o: ..\STM32F10x_FWLib\inc\stm32f10x_iwdg.h
+..\obj\steering engine.o: ..\STM32F10x_FWLib\inc\stm32f10x_pwr.h
+..\obj\steering engine.o: ..\STM32F10x_FWLib\inc\stm32f10x_rcc.h
+..\obj\steering engine.o: ..\STM32F10x_FWLib\inc\stm32f10x_rtc.h
+..\obj\steering engine.o: ..\STM32F10x_FWLib\inc\stm32f10x_sdio.h
+..\obj\steering engine.o: ..\STM32F10x_FWLib\inc\stm32f10x_spi.h
+..\obj\steering engine.o: ..\STM32F10x_FWLib\inc\stm32f10x_tim.h
+..\obj\steering engine.o: ..\STM32F10x_FWLib\inc\stm32f10x_usart.h
+..\obj\steering engine.o: ..\STM32F10x_FWLib\inc\stm32f10x_wwdg.h
+..\obj\steering engine.o: ..\STM32F10x_FWLib\inc\misc.h
+..\obj\steering engine.o: ..\HARDWARE\TIMER\timer.h
+..\obj\steering engine.o: ..\SYSTEM\delay\delay.h

@@ -3,7 +3,6 @@
 #include "user.h"
 
 extern u16 count;
-extern u8 bug;
 
 void SlowStand(void);//»ºÂýÕ¾Æð
 void Stand(void);//Õ¾Á¢

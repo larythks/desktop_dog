@@ -1,6 +1,7 @@
 ..\obj\leg.o: ..\HARDWARE\LEG\leg.c
 ..\obj\leg.o: ..\HARDWARE\LEG\leg.h
 ..\obj\leg.o: ..\SYSTEM\sys\sys.h
+..\obj\leg.o: ..\USER\user.h
 ..\obj\leg.o: ..\USER\stm32f10x.h
 ..\obj\leg.o: ..\CORE\core_cm3.h
 ..\obj\leg.o: F:\Keil for ARM\ARM\ARMCC\Bin\..\include\stdint.h
@@ -30,3 +31,19 @@
 ..\obj\leg.o: ..\STM32F10x_FWLib\inc\stm32f10x_usart.h
 ..\obj\leg.o: ..\STM32F10x_FWLib\inc\stm32f10x_wwdg.h
 ..\obj\leg.o: ..\STM32F10x_FWLib\inc\misc.h
+..\obj\leg.o: F:\Keil for ARM\ARM\ARMCC\Bin\..\include\stdio.h
+..\obj\leg.o: ..\SYSTEM\sys\sys.h
+..\obj\leg.o: ..\SYSTEM\delay\delay.h
+..\obj\leg.o: ..\USER\user.h
+..\obj\leg.o: ..\SYSTEM\usart\usart.h
+..\obj\leg.o: ..\HARDWARE\LED\led.h
+..\obj\leg.o: ..\HARDWARE\KEY\key.h
+..\obj\leg.o: ..\HARDWARE\LEG\leg.h
+..\obj\leg.o: ..\HARDWARE\MODE\mode.h
+..\obj\leg.o: ..\HARDWARE\OLED\OLED.h
+..\obj\leg.o: ..\HARDWARE\OLED\OLED_Data.h
+..\obj\leg.o: ..\HARDWARE\Tianwen\tianwen.h
+..\obj\leg.o: ..\HARDWARE\bluebooth\bluetooth.h
+..\obj\leg.o: F:\Keil for ARM\ARM\ARMCC\Bin\..\include\stdarg.h
+..\obj\leg.o: F:\Keil for ARM\ARM\ARMCC\Bin\..\include\string.h
+..\obj\leg.o: F:\Keil for ARM\ARM\ARMCC\Bin\..\include\math.h

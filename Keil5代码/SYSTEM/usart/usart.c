@@ -1,163 +1,94 @@
 #include "usart.h"
 
+//设置一个接收缓冲区和发送缓冲区
+#define RECIVE_BUF_SIZE		128
+uint8_t usart1_recv_buf[RECIVE_BUF_SIZE];
+int usart1_rcv_index=0;//接收指针
+int usart1_get_index=0;//获取数据指针
+int usart1_idle_flag=0;//空闲标志位
 
-u8 USART1_RX_BUF[USART1_REC_LEN];
-u16 USART1_RX_STA=0;
-
-
-struct __FILE 
-{ 
-	int handle; 
-
-}; 
-
-FILE __stdout;       
-//定义_sys_exit()以避免使用半主机模式    
-void _sys_exit(int x) 
-{ 
-	x = x; 
-} 
-//重定义fputc函数 
-int fputc(int ch, FILE *f)
-{      
-	while((USART1->SR&0X40)==0);//循环发送,直到发送完毕   
-    USART1->DR = (u8) ch;      
-	return ch;
-}
-
-
-void USART1_Init(u32 baud)
-{
-	GPIO_InitTypeDef GPIO_InitStructure;
-	USART_InitTypeDef USART_InitStructure;
-	NVIC_InitTypeDef NVIC_InitStructure;
-	
-	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA,ENABLE);
-	RCC_APB2PeriphClockCmd(RCC_APB2Periph_USART1,ENABLE);
-	
-	GPIO_InitStructure.GPIO_Mode=GPIO_Mode_AF_PP;
-	GPIO_InitStructure.GPIO_Pin=GPIO_Pin_9;
-	GPIO_InitStructure.GPIO_Speed=GPIO_Speed_50MHz;
-	GPIO_Init(GPIOA,&GPIO_InitStructure);
-	
-	GPIO_InitStructure.GPIO_Mode=GPIO_Mode_IN_FLOATING;
-	GPIO_InitStructure.GPIO_Pin=GPIO_Pin_10;
-	GPIO_InitStructure.GPIO_Speed=GPIO_Speed_50MHz;
-	GPIO_Init(GPIOA,&GPIO_InitStructure);
-	
-	USART_InitStructure.USART_BaudRate=baud;
-	USART_InitStructure.USART_WordLength=USART_WordLength_8b;
-	USART_InitStructure.USART_Mode=USART_Mode_Rx|USART_Mode_Tx;
-	USART_InitStructure.USART_Parity=USART_Parity_No;
-	USART_InitStructure.USART_StopBits=USART_StopBits_1;
-	USART_InitStructure.USART_HardwareFlowControl=USART_HardwareFlowControl_None;
-	USART_Init(USART1,&USART_InitStructure);
-	
-	
-	NVIC_InitStructure.NVIC_IRQChannel=USART1_IRQn;
-	NVIC_InitStructure.NVIC_IRQChannelCmd=ENABLE;
-	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority=3;
-	NVIC_InitStructure.NVIC_IRQChannelSubPriority=3;
-	NVIC_Init(&NVIC_InitStructure);
-	
-	USART_ITConfig(USART1,USART_IT_RXNE,ENABLE);
-	USART_Cmd(USART1,ENABLE);
-}
-
-void USART1_IRQHandler(void)
-{
-	u8 Res;
-#if SYSTEM_SUPPORT_OS 		//如果SYSTEM_SUPPORT_OS为真，则需要支持OS.
-	OSIntEnter();    
-#endif
-	if(USART_GetITStatus(USART1, USART_IT_RXNE) != RESET)  //接收中断(接收到的数据必须是0x0d 0x0a结尾)
-		{
-			//蓝牙控制
-		Res =USART_ReceiveData(USART1);	//读取接收到的数据
-		if(Res =='G') USART1_Sign =1;
-		if(Res =='K') USART1_Sign =2;
-		if(Res =='H') USART1_Sign =3;
-		if(Res =='J') USART1_Sign =4;
-		if(Res =='I') USART1_Sign =5;
-			
-		if((USART1_RX_STA&0x8000)==0)//接收未完成
-			{
-			if(USART1_RX_STA&0x4000)//接收到了0x0d
-				{
-				if(Res!=0x0a)USART1_RX_STA=0;//接收错误,重新开始
-				else USART1_RX_STA|=0x8000;	//接收完成了 
-				}
-			else //还没收到0X0D
-				{	
-				if(Res==0x0d)USART1_RX_STA|=0x4000;
-				else
-					{
-					USART1_RX_BUF[USART1_RX_STA&0X3FFF]=Res ;
-					USART1_RX_STA++;
-					if(USART1_RX_STA>(USART1_RX_STA-1))USART1_RX_STA=0;//接收数据错误,重新开始接收	  
-					}		 
-				}
-			}   		 
-     } 
-//	u8 r=0;
-//	if(USART_GetITStatus(USART1,USART_IT_RXNE)!=RESET)
-//	{
-//		r=USART_ReceiveData(USART1);
-//		if(r=='A')
-//		{
-//			USART1_Sign=1;
-//			printf("%d\r\n",USART1_Sign);
-//		}
-//		if(r=='B')
-//		{
-//			USART1_Sign=2;
-//			printf("%d\r\n",USART1_Sign);
-//		}
-//		if(USART1_RX_STA&0x8000)
-//		{
-//			if(USART1_RX_STA&0x4000)
-//			{
-//				if(r!=0x0a)USART1_RX_STA=0;
-//				else USART1_RX_STA|=0x8000;
-//			}
-//			else
-//			{
-//				if(r==0x0d)USART1_RX_STA|=0x4000;
-//				else
-//				{
-//					USART1_RX_BUF[USART1_RX_STA&0x3fff]=r;
-//					USART1_RX_STA++;
-//					if(USART1_RX_STA>(USART1_REC_LEN-1))USART1_RX_STA=0;
-//				}
-//			}
-//		}
-//	}
-}
-
-/**
-* @brief 任意串口发送不定类型字长数据
-* @param 例：UsartPrintf(USART3," sdgyasgfuigaiuhuqw");
-* @return 
+/*
+	PA9---TX
+	PA10--RX
 */
-
-void UsartPrintf(USART_TypeDef * USARTx,char * fmt ,...)
-{
-	unsigned char UsartPrintfBuf[256]; //定义一个字符串数组
-	va_list ap;//初始化指向参数列表的指针
-	unsigned char *pStr = UsartPrintfBuf; //指针指向数组首地址
+void USART1_Init(uint32_t barud){
+	GPIO_InitTypeDef gpio_instruct;
+	USART_InitTypeDef usart1_instruct;
+	NVIC_InitTypeDef nvic_instruct;
+	//开启时钟
+	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA|RCC_APB2Periph_AFIO|RCC_APB2Periph_USART1, ENABLE);
+	//PA9
+	gpio_instruct.GPIO_Mode=GPIO_Mode_AF_PP;
+	gpio_instruct.GPIO_Pin=GPIO_Pin_9;
+	gpio_instruct.GPIO_Speed=GPIO_Speed_50MHz;
+	GPIO_Init(GPIOA, &gpio_instruct);
+	//PA10
+	gpio_instruct.GPIO_Mode=GPIO_Mode_IN_FLOATING;
+	gpio_instruct.GPIO_Pin=GPIO_Pin_10;
+	GPIO_Init(GPIOA, &gpio_instruct);
+	//初始化USART1
+	usart1_instruct.USART_BaudRate=barud;
+	usart1_instruct.USART_HardwareFlowControl=USART_HardwareFlowControl_None;//硬件流控
+	usart1_instruct.USART_Mode=USART_Mode_Rx|USART_Mode_Tx;
+	usart1_instruct.USART_Parity=USART_Parity_No;
+	usart1_instruct.USART_StopBits=USART_StopBits_1;
+	usart1_instruct.USART_WordLength=USART_WordLength_8b;
+	USART_Init(USART1, &usart1_instruct);
+	//配置NVIC 因为usart数据内部外设不需要配置外部中断
+	nvic_instruct.NVIC_IRQChannel=USART1_IRQn;
+	nvic_instruct.NVIC_IRQChannelCmd=ENABLE;
+	nvic_instruct.NVIC_IRQChannelPreemptionPriority=2; //抢占优先级
+	nvic_instruct.NVIC_IRQChannelSubPriority=2;	//响应优先级
+	 NVIC_Init(&nvic_instruct);
+	//设置接受非空中断、空闲中断
+	USART_ITConfig(USART1, USART_IT_RXNE, ENABLE);
+	USART_ITConfig(USART1, USART_IT_IDLE, ENABLE);
 	
-	va_start(ap,fmt);//将第一个可变参数的地址付给ap,即ap 指向可变参数列表的开始
-	vsprintf((char *)UsartPrintfBuf, fmt,ap);
-	//将参数fmt、ap 指向的可变参数一起转化成格式化字符串，放string数组中，作用同sprintf（），只是参数类型不同 
+	//启动串口1
+	USART_Cmd(USART1, ENABLE);
 
-	va_end(ap); //清除指针
-	while(*pStr != 0) //判断是否发送完字符串
-	{
-		//while(USART_GetFlagStatus(USART3,USART_FLAG_TC == RESET));//判断发送标志位，是否发送结束
-		USART_SendData(USARTx,*pStr++);//通过库函数发送字符串
-		//pStr ++;
-		while(USART_GetFlagStatus(USARTx,USART_FLAG_TC) == RESET);//判断发送标志位，是否发送结束
-	} 
-//	memset(UsartPrintfBuf,0,256);//清空一下数组
+}
+//usart1中断公共处理函数
+void USART1_IRQHandler(void){
+//判断是什么原因发生中断
+	if(USART_GetITStatus(USART1,USART_IT_RXNE)){
+	usart1_recv_buf[usart1_rcv_index]=USART_ReceiveData(USART1);
+		usart1_rcv_index++;
+		if(usart1_rcv_index>=RECIVE_BUF_SIZE){
+			usart1_rcv_index=usart1_get_index=usart1_idle_flag=0;
+		}
+	}else if(USART_GetITStatus(USART1,USART_IT_IDLE)){
+	//清除空闲标志位  需要手动读取DR寄存器，标志才能够被清除
+		USART_ReceiveData(USART1);
+		usart1_idle_flag=1;
+	}
 }
 
+//发送数据
+int send_byte(int data){
+	while(USART_GetFlagStatus(USART1, USART_FLAG_TXE)==RESET){};
+	USART_SendData(USART1, data);
+	//等待数据发送完成  TXE=RESET 表示数据还没有发送出去，继续等待   TXE=SET 表示数据已经发送出去，程序继续运行
+	return data;
+}
+//接收数据
+int recv_byte(void){
+	int data;
+	//等待数据
+	while(usart1_get_index>=usart1_rcv_index){};
+	data=USART_ReceiveData(USART1);
+	usart1_get_index++;
+	//说明拿到了最新的数据
+		if(usart1_get_index>=usart1_rcv_index){
+		usart1_get_index=usart1_rcv_index=usart1_idle_flag=0;
+		}
+		send_byte(data);
+		return data;
+}
+// 
+int fputc(int data, FILE *f){
+	return send_byte(data);
+}
+int fgetc(FILE *f){
+	return recv_byte();
+}

@@ -53,50 +53,52 @@ void USART3_IRQHandler(void)
 //	OLED_Clear();
 		LED=!LED;
 		Blue_data[0]=USART_ReceiveData(USART3);
-		if(Blue_data[0]==0x49){
+		if(Blue_data[0]==0x49){		//I
 			Sign=1;//立正
-			Usart_SendByte(USART2, 0x41);  //A
+			Usart_SendByte(USART2, 0x41);
 		}
-		if(Blue_data[0]==0x47){
+		if(Blue_data[0]==0x47){		//G
 			Sign=2;//前进
-			Usart_SendByte(USART2, 0x42);  //B
+			Usart_SendByte(USART2, 0x42);
 		}
-		if(Blue_data[0]==0x4B){
+		if(Blue_data[0]==0x4B){		//K
 			Sign=3;//后退
-			Usart_SendByte(USART2, 0x43);  //C
+			Usart_SendByte(USART2, 0x43);
 		}
-		if(Blue_data[0]==0x48){
+		if(Blue_data[0]==0x48){		//H
 			Sign=4;//左转
-			Usart_SendByte(USART2, 0x44);  //D
+			Usart_SendByte(USART2, 0x44);
 		}
-		if(Blue_data[0]==0x4A){
+		if(Blue_data[0]==0x4A){		//J
 			Sign=5;//右转
-			Usart_SendByte(USART2, 0x45);  //E
+			Usart_SendByte(USART2, 0x45);
 		}
-		if(Blue_data[0]==0x41){
+		if(Blue_data[0]==0x41){		//A
 			Sign=12;//凶一个
-			Usart_SendByte(USART2, 0x46);  //F
+			Usart_SendByte(USART2, 0x46);
 		}
-		if(Blue_data[0]==0x42){
+		if(Blue_data[0]==0x42){		//B
 			Sign=6;//握手
-			Usart_SendByte(USART2, 0x47);  //G
+			Usart_SendByte(USART2, 0x47);
 		}
-		if(Blue_data[0]==0x43){
+		if(Blue_data[0]==0x46){		//F
 			Sign=7;//坐
-			Usart_SendByte(USART2, 0x48);  //H
+			Usart_SendByte(USART2, 0x48);
 		}
-		if(Blue_data[0]==0x44){
+		if(Blue_data[0]==0x4C){		//L
 			Sign=8;//睡觉
-			Usart_SendByte(USART2, 0x49);  //I
+			Usart_SendByte(USART2, 0x49);
 		}
-		if(Blue_data[0]==0x45){
+		if(Blue_data[0]==0x4D){		//M
 			Sign=11;//伸懒腰
-			Usart_SendByte(USART2, 0x4A);  //J
+			Usart_SendByte(USART2, 0x4A);
 		}
 		if(Blue_data[0]==0x5B){
 			Sign=15;//隐藏动作
 			Usart_SendByte(USART2, 0x5B);  
 		}
+		//    C          O          N          N          E          C          T          E          D
+		//   0X43       0x4f			 0x4E			  0x4E			 0X45			  0X43			 0X54			  0X45			 0X44
 		
 //		sprintf((char *)string,"%d",Blue_data[0]);
 //		OLED_ShowString(0,0,string,8);

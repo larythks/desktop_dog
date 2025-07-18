@@ -32,8 +32,8 @@
 ..\obj\bluetooth.o: ..\STM32F10x_FWLib\inc\misc.h
 ..\obj\bluetooth.o: F:\Keil for ARM\ARM\ARMCC\Bin\..\include\stdio.h
 ..\obj\bluetooth.o: ..\SYSTEM\sys\sys.h
-..\obj\bluetooth.o: ..\SYSTEM\delay\delay.h
 ..\obj\bluetooth.o: ..\USER\user.h
+..\obj\bluetooth.o: ..\SYSTEM\delay\delay.h
 ..\obj\bluetooth.o: ..\SYSTEM\usart\usart.h
 ..\obj\bluetooth.o: ..\HARDWARE\LED\led.h
 ..\obj\bluetooth.o: ..\HARDWARE\KEY\key.h

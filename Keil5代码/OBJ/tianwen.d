@@ -32,8 +32,8 @@
 ..\obj\tianwen.o: ..\STM32F10x_FWLib\inc\misc.h
 ..\obj\tianwen.o: F:\Keil for ARM\ARM\ARMCC\Bin\..\include\stdio.h
 ..\obj\tianwen.o: ..\SYSTEM\sys\sys.h
-..\obj\tianwen.o: ..\SYSTEM\delay\delay.h
 ..\obj\tianwen.o: ..\USER\user.h
+..\obj\tianwen.o: ..\SYSTEM\delay\delay.h
 ..\obj\tianwen.o: ..\SYSTEM\usart\usart.h
 ..\obj\tianwen.o: ..\HARDWARE\LED\led.h
 ..\obj\tianwen.o: ..\HARDWARE\KEY\key.h

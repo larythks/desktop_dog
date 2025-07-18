@@ -32,8 +32,8 @@
 ..\obj\oled.o: ..\STM32F10x_FWLib\inc\misc.h
 ..\obj\oled.o: F:\Keil for ARM\ARM\ARMCC\Bin\..\include\stdio.h
 ..\obj\oled.o: ..\SYSTEM\sys\sys.h
-..\obj\oled.o: ..\SYSTEM\delay\delay.h
 ..\obj\oled.o: ..\USER\user.h
+..\obj\oled.o: ..\SYSTEM\delay\delay.h
 ..\obj\oled.o: ..\SYSTEM\usart\usart.h
 ..\obj\oled.o: ..\HARDWARE\LED\led.h
 ..\obj\oled.o: ..\HARDWARE\KEY\key.h

@@ -51,10 +51,7 @@ void USART2_IRQHandler(void)
 	{
 		LED=!LED;
 		USART2_Res =USART_ReceiveData(USART2);	//读取接收到的数据
-		if(USART2_Res!=USART2_Res2)
-		{
-			bug=0;
-		}
+
 		if(USART2_Res==0x31)Sign=1;//立正
 		if(USART2_Res==0x32)Sign=2;//前进
 		if(USART2_Res==0x33)Sign=3;//后退
@@ -72,8 +69,6 @@ void USART2_IRQHandler(void)
 		if(USART2_Res==0x66)LED_OPEN;//开灯
 		if(USART2_Res==0x67)LED_CLOSE;//关灯
 		if(USART2_Res==0x68)Sign=1;//恢复初始化站立
-		
-		USART2_Res2=USART2_Res;
 		
 //		sprintf((char *)string,"%x",USART2_Res);
 //		OLED_ShowString(0,0,string,8);

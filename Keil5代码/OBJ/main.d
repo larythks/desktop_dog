@@ -31,8 +31,8 @@
 ..\obj\main.o: ..\STM32F10x_FWLib\inc\misc.h
 ..\obj\main.o: F:\Keil for ARM\ARM\ARMCC\Bin\..\include\stdio.h
 ..\obj\main.o: ..\SYSTEM\sys\sys.h
-..\obj\main.o: ..\SYSTEM\delay\delay.h
 ..\obj\main.o: ..\USER\user.h
+..\obj\main.o: ..\SYSTEM\delay\delay.h
 ..\obj\main.o: ..\SYSTEM\usart\usart.h
 ..\obj\main.o: ..\HARDWARE\LED\led.h
 ..\obj\main.o: ..\HARDWARE\KEY\key.h

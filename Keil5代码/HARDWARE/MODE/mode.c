@@ -97,7 +97,6 @@ void For(int x,int y,int num)
 	}
 }
 
-//»ºÂýÕ¾Æð£¨õÔõÄ°æ£©
 void SlowStand(void)
 {
 	static uint16_t value1 = 2250;
@@ -118,13 +117,19 @@ void SlowStand(void)
 		if(value2 >= 1500 && value1 <= 1500)
 			break;
 	}
-	TIM_SetCompare1(TIM4,60);
-	TIM_SetCompare3(TIM4,180);
-	TIM_SetCompare4(TIM4,180);
+	OLED_ShowImage(32,0,64,64,BMP11);
+	OLED_Update();
+	TIM_SetCompare1(TIM4,100);
+	TIM_SetCompare3(TIM4,240);
+	TIM_SetCompare2(TIM4,100);
+	TIM_SetCompare4(TIM4,120);
 	delay_ms(200);
 	TIM_SetCompare1(TIM4,150);
 	TIM_SetCompare3(TIM4,150);
+	TIM_SetCompare2(TIM4,150);
 	TIM_SetCompare4(TIM4,150);
+	OLED_ShowImage(0,0,128,64,BMP1);
+	OLED_Update();
 }
 
 void Stand(void)//Õ¾Á¢

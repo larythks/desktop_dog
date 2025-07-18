@@ -22,6 +22,9 @@ int main(void)
 	//定时器3通道1初始化（小狗尾巴）
 	TIM3_CH1_Init(1999,719);//尾巴
 	
+	OLED_ShowImage(32,0,64,64,BMP13_2);
+	OLED_Update();
+	
 	//初始化动作
 	Sleep();
 	SlowStand();

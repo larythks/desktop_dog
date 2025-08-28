@@ -1,138 +1,144 @@
-#include asr.h
-extern C{ void  __dso_handle = 0 ;}
-#include setup.h
-#include HardwareSerial.h
-#include myLibasr_event.h
+#include "asr.h"
+extern "C"{ void * __dso_handle = 0 ;}
+#include "setup.h"
+#include "HardwareSerial.h"
+#include "myLib/asr_event.h"
 
 uint32_t snid;
 void ASR_CODE();
 void app();
 
-{speak京腔侃爷-北京口音男声,vol10,speed10,platformShrimpBrotherVoice}
-{playid10001,voice森拜}
-{playid10002,voice主人，我退下了，叫小智唤醒我}
+//{speak:魅力女友-角色扮演女声,vol:8,speed:10,platform:ShrimpBrotherVoice}
+//{playid:10001,voice:森拜}
+//{playid:10002,voice:主人，我退下了，叫小智唤醒我}
 
-天问语音部分采用中文图形化编程，代码的顺序为从上往下，从左往右
-本程序可以把外部录音植入芯片，比如唤醒小狗后回复音是你朋友的声音
+//天问语音部分采用中文图形化编程，代码的顺序为从上往下，从左往右
+//本程序可以把外部录音植入芯片，比如唤醒小狗后回复音是你朋友的声音
 void sys_sleep_hook()
 {
   delay(100);
-  Serial.print(f);
+  Serial.print("f");
 
 }
 
-描述该功能...
-
+/*描述该功能...
+*/
 void ASR_CODE(){
-  本函数是语音识别成功钩子程序
-  运行时间越短越好，复杂控制启动新线程运行
-  唤醒时间设置必须在ASR_CODE中才有效
-  用switch分支选择，根据不同的识别成功的ID执行相应动作，点击switch左上齿轮
-  可以增加分支项
+  //本函数是语音识别成功钩子程序
+  //运行时间越短越好，复杂控制启动新线程运行
+  //唤醒时间设置必须在ASR_CODE中才有效
+  //用switch分支选择，根据不同的识别成功的ID执行相应动作，点击switch左上齿轮
+  //可以增加分支项
   set_state_enter_wakeup(30000);
   if(get_wakeup_state()){
     delay(100);
     if((snid) == 9){
-      Serial.print(1);
+      Serial.print("1");
     }
     else if((snid) == 10){
-      Serial.print(1);
+      Serial.print("1");
     }
     else if((snid) == 11){
-      Serial.print(1);
+      Serial.print("1");
     }
     else if((snid) == 12){
-      Serial.print(1);
+      Serial.print("1");
     }
     else if((snid) == 13){
-      Serial.print(1);
+      Serial.print("1");
     }
     else if((snid) == 14){
-      Serial.print(1);
+      Serial.print("1");
     }
     else if((snid) == 15){
-      Serial.print(1);
+      Serial.print("1");
     }
     else if((snid) == 16){
-      Serial.print(2);
+      Serial.print("2");
     }
     else if((snid) == 17){
-      Serial.print(2);
+      Serial.print("2");
     }
     else if((snid) == 18){
-      Serial.print(2);
+      Serial.print("2");
     }
     else if((snid) == 19){
-      Serial.print(3);
+      Serial.print("3");
     }
     else if((snid) == 20){
-      Serial.print(3);
+      Serial.print("3");
     }
     else if((snid) == 21){
-      Serial.print(4);
+      Serial.print("4");
     }
     else if((snid) == 22){
-      Serial.print(4);
+      Serial.print("4");
     }
     else if((snid) == 23){
-      Serial.print(5);
+      Serial.print("5");
     }
     else if((snid) == 24){
-      Serial.print(5);
+      Serial.print("5");
     }
     else if((snid) == 25){
-      Serial.print(6);
+      Serial.print("6");
     }
     else if((snid) == 26){
-      Serial.print(7);
+      Serial.print("7");
     }
     else if((snid) == 27){
-      Serial.print(7);
+      Serial.print("7");
     }
     else if((snid) == 28){
-      Serial.print(8);
+      Serial.print("8");
     }
     else if((snid) == 29){
-      Serial.print(9);
+      Serial.print("9");
     }
     else if((snid) == 30){
-      Serial.print(9);
+      Serial.print("9");
     }
     else if((snid) == 31){
-      Serial.print(a);
+      Serial.print("a");
     }
     else if((snid) == 32){
-      Serial.print(a);
+      Serial.print("a");
     }
     else if((snid) == 33){
-      Serial.print(b);
+      Serial.print("b");
     }
     else if((snid) == 34){
-      Serial.print(c);
+      Serial.print("c");
     }
     else if((snid) == 35){
-      Serial.print(c);
+      Serial.print("c");
     }
     else if((snid) == 36){
-      Serial.print(d);
+      Serial.print("d");
     }
     else if((snid) == 37){
-      Serial.print(d);
+      Serial.print("d");
     }
     else if((snid) == 40){
-      Serial.print(e);
+      Serial.print("e");
     }
     else if((snid) == 41){
-      Serial.print(e);
+      Serial.print("e");
     }
     else if((snid) == 42){
-      Serial.print(e);
+      Serial.print("e");
     }
     else if((snid) == 44){
-      Serial.print(f);
+      Serial.print("f");
     }
     else if((snid) == 45){
-      Serial.print(g);
+      Serial.print("g");
+    }
+    else if((snid) == 2){
+      Serial.print("h");
+    }
+    else if((snid) == 3){
+      Serial.print("h");
     }
   }
 
@@ -140,54 +146,62 @@ void ASR_CODE(){
 
 void app(){
   while (1) {
-    char music_flag;
+    char Serial_read;
     delay(2);
-    if(Serial.available()  0){
-      music_flag = Serial.read();
+    if(Serial.available() > 0){
+      Serial_read = Serial.read();
       Serial.flush();
-      if(music_flag == 0x61){
-        {playid10500,voice站立}
+      if(Serial_read == 0x41){
+        //{playid:10500,voice:站立}
         play_audio(10500);
       }
-      else if(music_flag == 0x62){
-        {playid10501,voice前进}
+      else if(Serial_read == 0x42){
+        //{playid:10501,voice:前进}
         play_audio(10501);
       }
-      else if(music_flag == 0x63){
-        {playid10502,voice后退}
+      else if(Serial_read == 0x43){
+        //{playid:10502,voice:后退}
         play_audio(10502);
       }
-      else if(music_flag == 0x64){
-        {playid10503,voice左转}
+      else if(Serial_read == 0x44){
+        //{playid:10503,voice:左转}
         play_audio(10503);
       }
-      else if(music_flag == 0x65){
-        {playid10504,voice右转}
+      else if(Serial_read == 0x45){
+        //{playid:10504,voice:右转}
         play_audio(10504);
       }
-      else if(music_flag == 0x66){
-        {playid10505,voice凶一个}
+      else if(Serial_read == 0x46){
+        //{playid:10505,voice:凶一个}
         play_audio(10505);
       }
-      else if(music_flag == 0x67){
-        {playid10506,voice握手}
+      else if(Serial_read == 0x47){
+        //{playid:10506,voice:握手}
         play_audio(10506);
       }
-      else if(music_flag == 0x68){
-        {playid10507,voice坐}
+      else if(Serial_read == 0x48){
+        //{playid:10507,voice:坐}
         play_audio(10507);
       }
-      else if(music_flag == 0x69){
-        {playid10508,voice睡觉}
+      else if(Serial_read == 0x49){
+        //{playid:10508,voice:睡觉}
         play_audio(10508);
       }
-      else if(music_flag == 0x6A){
-        {playid10509,voice伸懒腰}
+      else if(Serial_read == 0x4A){
+        //{playid:10509,voice:伸懒腰}
         play_audio(10509);
       }
-      else if(music_flag == 0x6B){
-        {playid10510,voice触发影藏动作}
+      else if(Serial_read == 0x5B){
+        //{playid:10510,voice:触发影藏动作}
         play_audio(10510);
+      }
+      else if(Serial_read == 0x4E){
+        //{playid:10511,voice:蓝牙已连接}
+        play_audio(10511);
+      }
+      else if(Serial_read == 0x4F){
+        //{playid:10512,voice:蓝牙已断开}
+        play_audio(10512);
       }
     }
   }
@@ -195,7 +209,7 @@ void app(){
 }
 
 void hardware_init(){
-  需要操作系统启动后初始化的内容
+  //需要操作系统启动后初始化的内容
   setPinFun(13,SECOND_FUNCTION);
   setPinFun(14,SECOND_FUNCTION);
   Serial.begin(115200);
@@ -203,60 +217,61 @@ void hardware_init(){
   setPinFun(4,FIRST_FUNCTION);
   pinMode(4,output);
   digitalWrite(4,0);
-  音量范围1-7
-  xTaskCreate(app,app,128,NULL,4,NULL);
+  //音量范围1-7
+  xTaskCreate(app,"app",128,NULL,4,NULL);
   vTaskDelete(NULL);
 }
 
 void setup()
 {
-  需要操作系统启动前初始化的内容
-  播报音下拉菜单可以选择，合成音量是指TTS生成文件的音量
-  欢迎词指开机提示音，可以为空
-  退出语音是指休眠时提示音，可以为空
+  //需要操作系统启动前初始化的内容
+  //播报音下拉菜单可以选择，合成音量是指TTS生成文件的音量
+  set_wakeup_forever();
+  //欢迎词指开机提示音，可以为空
+  //退出语音是指休眠时提示音，可以为空
   set_state_enter_wakeup(30000);
-  休眠后用唤醒词唤醒后才能执行命令，唤醒词最多5个。回复语可以空。ID范围为0-9999
-  修改名字的话修改唤醒词
-  {ID2,keyword唤醒词,ASR刘富飞,ASRTO我让你飞起来}
-  {ID3,keyword唤醒词,ASR小智小智,ASRTO我让你飞起来}
-  {ID5,keyword唤醒词,ASR你叫什么名字呀,ASRTO你好主人，我叫小智}
-  {ID6,keyword命令词,ASR你会赣麻,ASRTO我会陪你玩，跳舞给你看优}
-  {ID7,keyword命令词,ASR你有哪些功能,ASRTO我会立正，前进，后退，左转，右转，握手，坐，睡觉，摇摆，跳舞，和哄你开心优}
-  {ID8,keyword命令词,ASR你有什么功能,ASRTO我会立正，前进，后退，左转，右转，握手，坐，睡觉，摇摆，跳舞，和哄你开心优}
-  {ID9,keyword命令词,ASR立正,ASRTO好的}
-  {ID10,keyword命令词,ASR起来,ASRTO嗻}
-  {ID11,keyword命令词,ASR摇尾巴,ASRTO望望望}
-  {ID12,keyword命令词,ASR停下,ASRTO遵命}
-  {ID13,keyword命令词,ASR停,ASRTO好累}
-  {ID14,keyword命令词,ASR站起来,ASRTO收到}
-  {ID15,keyword命令词,ASR站立,ASRTO是}
-  {ID16,keyword命令词,ASR前进,ASRTO好累}
-  {ID17,keyword命令词,ASR过来,ASRTO望望望}
-  {ID18,keyword命令词,ASR往前走,ASRTO收到}
-  {ID19,keyword命令词,ASR后退,ASRTO望望望}
-  {ID20,keyword命令词,ASR往后走,ASRTO好累}
-  {ID21,keyword命令词,ASR左转,ASRTO望望望}
-  {ID22,keyword命令词,ASR往左走,ASRTO遵命}
-  {ID23,keyword命令词,ASR右转,ASRTO望望望}
-  {ID24,keyword命令词,ASR往右走,ASRTO好的}
-  {ID25,keyword命令词,ASR握手,ASRTO望望望}
-  {ID26,keyword命令词,ASR坐下,ASRTO望望望}
-  {ID27,keyword命令词,ASR趴下,ASRTO好累}
-  {ID28,keyword命令词,ASR睡觉,ASRTO广西老表}
-  {ID29,keyword命令词,ASR摇摆,ASRTO望望望}
-  {ID30,keyword命令词,ASR摇一摇,ASRTO遵命}
-  {ID31,keyword命令词,ASR跳舞,ASRTO望望望}
-  {ID32,keyword命令词,ASR跳一支舞,ASRTO好累}
-  {ID33,keyword命令词,ASR笑一个,ASRTO笑一个}
-  {ID34,keyword命令词,ASR凶一个,ASRTO凶}
-  {ID35,keyword命令词,ASR狠一个,ASRTO凶}
-  {ID36,keyword命令词,ASR撒尿,ASRTO走开走开，不要看}
-  {ID37,keyword命令词,ASR上厕所,ASRTO羞羞脸}
-  {ID38,keyword命令词,ASR跑起来,ASRTO对不起主人，我跑不动}
-  {ID39,keyword命令词,ASR你是小傻瓜吗,ASRTO你才是呢}
-  {ID40,keyword命令词,ASR走开,ASRTO嗷嗷嗷}
-  {ID41,keyword命令词,ASR我讨厌你,ASRTO嗷嗷嗷}
-  {ID42,keyword命令词,ASR滚开,ASRTO嗷嗷嗷}
-  {ID44,keyword命令词,ASR开灯,ASRTO打开灯光}
-  {ID45,keyword命令词,ASR关灯,ASRTO关闭灯光}
+  //休眠后用唤醒词唤醒后才能执行命令，唤醒词最多5个。回复语可以空。ID范围为0-9999
+  //修改名字的话修改唤醒词
+  //{ID:2,keyword:"唤醒词",ASR:"刘富飞",ASRTO:"我让你飞起来"}
+  //{ID:3,keyword:"唤醒词",ASR:"小智小智",ASRTO:"我让你飞起来"}
+  //{ID:5,keyword:"唤醒词",ASR:"你叫什么名字呀",ASRTO:"你好主人，我叫小智"}
+  //{ID:6,keyword:"命令词",ASR:"你会赣麻",ASRTO:"我会陪你玩，跳舞给你看优"}
+  //{ID:7,keyword:"命令词",ASR:"你有哪些功能",ASRTO:"我会立正，前进，后退，左转，右转，握手，坐，睡觉，摇摆，跳舞，和哄你开心优"}
+  //{ID:8,keyword:"命令词",ASR:"你有什么功能",ASRTO:"我会立正，前进，后退，左转，右转，握手，坐，睡觉，摇摆，跳舞，和哄你开心优"}
+  //{ID:9,keyword:"命令词",ASR:"立正",ASRTO:"好的"}
+  //{ID:10,keyword:"命令词",ASR:"起来",ASRTO:"嗻"}
+  //{ID:11,keyword:"命令词",ASR:"摇尾巴",ASRTO:"望望望"}
+  //{ID:12,keyword:"命令词",ASR:"停下",ASRTO:"遵命"}
+  //{ID:13,keyword:"命令词",ASR:"停",ASRTO:"好累"}
+  //{ID:14,keyword:"命令词",ASR:"站起来",ASRTO:"收到"}
+  //{ID:15,keyword:"命令词",ASR:"站立",ASRTO:"是"}
+  //{ID:16,keyword:"命令词",ASR:"前进",ASRTO:"好累"}
+  //{ID:17,keyword:"命令词",ASR:"过来",ASRTO:"望望望"}
+  //{ID:18,keyword:"命令词",ASR:"往前走",ASRTO:"收到"}
+  //{ID:19,keyword:"命令词",ASR:"后退",ASRTO:"望望望"}
+  //{ID:20,keyword:"命令词",ASR:"往后走",ASRTO:"好累"}
+  //{ID:21,keyword:"命令词",ASR:"左转",ASRTO:"望望望"}
+  //{ID:22,keyword:"命令词",ASR:"往左走",ASRTO:"遵命"}
+  //{ID:23,keyword:"命令词",ASR:"右转",ASRTO:"望望望"}
+  //{ID:24,keyword:"命令词",ASR:"往右走",ASRTO:"好的"}
+  //{ID:25,keyword:"命令词",ASR:"握手",ASRTO:"望望望"}
+  //{ID:26,keyword:"命令词",ASR:"坐下",ASRTO:"望望望"}
+  //{ID:27,keyword:"命令词",ASR:"趴下",ASRTO:"好累"}
+  //{ID:28,keyword:"命令词",ASR:"睡觉",ASRTO:"广西老表"}
+  //{ID:29,keyword:"命令词",ASR:"摇摆",ASRTO:"望望望"}
+  //{ID:30,keyword:"命令词",ASR:"摇一摇",ASRTO:"遵命"}
+  //{ID:31,keyword:"命令词",ASR:"跳舞",ASRTO:"望望望"}
+  //{ID:32,keyword:"命令词",ASR:"跳一支舞",ASRTO:"好累"}
+  //{ID:33,keyword:"命令词",ASR:"笑一个",ASRTO:"笑一个"}
+  //{ID:34,keyword:"命令词",ASR:"凶一个",ASRTO:"凶"}
+  //{ID:35,keyword:"命令词",ASR:"狠一个",ASRTO:"凶"}
+  //{ID:36,keyword:"命令词",ASR:"撒尿",ASRTO:"走开走开，不要看"}
+  //{ID:37,keyword:"命令词",ASR:"上厕所",ASRTO:"羞羞脸"}
+  //{ID:38,keyword:"命令词",ASR:"跑起来",ASRTO:"对不起主人，我跑不动"}
+  //{ID:39,keyword:"命令词",ASR:"你是小傻瓜吗",ASRTO:"你才是呢"}
+  //{ID:40,keyword:"命令词",ASR:"走开",ASRTO:"嗷嗷嗷"}
+  //{ID:41,keyword:"命令词",ASR:"我讨厌你",ASRTO:"嗷嗷嗷"}
+  //{ID:42,keyword:"命令词",ASR:"滚开",ASRTO:"嗷嗷嗷"}
+  //{ID:44,keyword:"命令词",ASR:"开灯",ASRTO:"打开灯光"}
+  //{ID:45,keyword:"命令词",ASR:"关灯",ASRTO:"关闭灯光"}
 }

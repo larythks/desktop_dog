@@ -94,21 +94,15 @@ void USART3_IRQHandler(void)
 		}
 		if(Blue_data[0]==0x4F){		//O
 			if(bluetooth_flag == 0){
-				//已连接蓝牙
-				bluetooth_flag++;
+				bluetooth_flag = 1;		//已连接蓝牙
 				Usart_SendByte(USART2, 0x4E);
 			}
-			else if(bluetooth_flag == 2)
-				bluetooth_flag = 0;
-			}
-		}
-		if(Blue_data[0]==0x49){		//I
-			if(bluetooth_flag == 1){
-				//已断开蓝牙连接
+			else if(bluetooth_flag == 1){
+				bluetooth_flag = 0;		//已断开蓝牙连接
 				Usart_SendByte(USART2, 0x4F);
-				bluetooth_flag++;
 			}
 		}
+	}
 		//  D        I        S         C          O          N          N          E          C          T          E          D
 		// 0x44     0x49     0x53      0x43       0x4F			 0x4E			  0x4E			 0x45			  0x43			 0x54			  0x45			 0x44
 }
